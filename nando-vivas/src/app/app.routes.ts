@@ -10,6 +10,5 @@ export const routes: Routes = [
     { path: 'work', component: HomeComponent },  // Ruta para "work"
     { path: 'contact', component: FooterComponent },  // Ruta para "contact" en footer
     { path: 'shop', component: ShopComponent },  // Ruta para "shop"
-    { path: 'detail/:id', component: DetailComponent }, // Ruta para el detalle de un proyecto.
-    { path: '**', redirectTo: ''}, // Ruta por defecto
+    { path: 'detail/:id', component: DetailComponent }, // Ruta para el detalle de un proyecto por defecto
 ];

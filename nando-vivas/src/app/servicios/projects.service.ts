@@ -9,7 +9,7 @@ import { Project } from '../interfaces/project';
 })
 export class ProjectsService {
   private apiUrl = 'http://localhost:3000/projects'; // Endpoint de la API para obtener proyectos desde MySQL
-  projects$: Observable<Project[]>;
+  projects: Observable<Project[]> = of([]); 
 
   localProjects: Project[] = [
     { id: 1, title: 'ARNOLD', client: 'Personal project', category: 'Typography', image: 'assets/works_grid/arnold-personal-work-typegace-serif-art-nouveau-font-nando-vivas-grid-1100x692.png' },
