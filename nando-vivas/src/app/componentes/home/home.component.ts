@@ -6,6 +6,7 @@ import { Project } from '../../interfaces/project';
 
 @Component({
     selector: 'app-home',
+    standalone: true,
     imports: [RouterModule, CommonModule],
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css']

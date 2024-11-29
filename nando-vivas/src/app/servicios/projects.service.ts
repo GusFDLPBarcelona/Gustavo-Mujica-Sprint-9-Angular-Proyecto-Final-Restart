@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collectionData, collection } from '@angular/fire/firestore';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Project } from '../interfaces/project';
@@ -8,6 +8,7 @@ import { Project } from '../interfaces/project';
   providedIn: 'root'
 })
 export class ProjectsService {
+  private apiUrl = 'http://localhost:3000/projects'; // Endpoint de la API para obtener proyectos desde MySQL
   projects$: Observable<Project[]>;
 
   localProjects: Project[] = [
@@ -29,18 +30,15 @@ export class ProjectsService {
   ];
  
 
-  constructor(private firestore: Firestore) {
-    const projectsCollection = collection(this.firestore, 'projects');
-    this.projects$ = collectionData(projectsCollection, { idField: 'id' }).pipe(
+  constructor(private http: HttpClient) {}
+
+  getProjects(): Observable<Project[]> {
+    return this.http.get<Project[]>(this.apiUrl).pipe(
       catchError(error => {
-        console.error("Error al conectar con Firebase, usando datos locales", error);
+        console.error("Error al conectar con la base de datos, usando datos locales", error);
         // Retorna los datos locales en caso de error
         return of(this.localProjects);
       })
     );
-  }
-
-  getProjects(): Observable<Project[]> {
-    return this.projects$;
   }
 }
