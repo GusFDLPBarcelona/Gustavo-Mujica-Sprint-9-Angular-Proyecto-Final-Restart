@@ -1,0 +1,84 @@
+/* Contenedor principal de la barra de navegación */
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    background-color: #f3f4f6; /* Equivalente a bg-gray-100 */
+    height: 80px; /* Equivalente a h-20 */
+    position: relative;
+}
+
+/* Contenedor del logo */
+.logo-container {
+    flex-shrink: 0;
+    margin: 0 auto;
+}
+
+.logo {
+    width: 192px; /* Equivalente a w-48 */
+    height: auto;
+}
+
+@media (min-width: 768px) {
+    .logo {
+        width: 144px; /* Equivalente a md:w-36 */
+    }
+
+    .logo-container {
+        margin: 0;
+    }
+}
+
+/* Menú de navegación */
+.navigation-menu {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .navigation-menu {
+        display: flex;
+        gap: 24px; /* Equivalente a space-x-6 */
+    }
+}
+
+.menu-link {
+    font-size: 14px; /* Equivalente a text-sm */
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.menu-link:hover {
+    color: #4b5563; /* Equivalente a hover:text-gray-600 */
+}
+
+@media (min-width: 768px) {
+    .menu-link {
+        font-size: 16px; /* Equivalente a md:text-base */
+    }
+}
+
+/* Botón de menú móvil */
+.mobile-menu {
+    display: block;
+    margin-top: 16px; /* Equivalente a mt-4 */
+}
+
+@media (min-width: 768px) {
+    .mobile-menu {
+        display: none;
+    }
+}
+
+.menu-button {
+    background: none;
+    border: none;
+    color: #4b5563; /* Equivalente a text-gray-600 */
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.menu-button:focus {
+    outline: none;
+}
