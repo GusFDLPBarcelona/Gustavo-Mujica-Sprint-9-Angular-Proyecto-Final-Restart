@@ -3,10 +3,11 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
 import { appConfig } from './app/app.config';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
-
-  
-  bootstrapApplication(AppComponent, {
-    providers: [provideHttpClient()]
-  }).catch(err => console.error(err));
+// Combinar appConfig y provideHttpClient
+bootstrapApplication(AppComponent, {
+  ...appConfig,
+  providers: [
+    ...appConfig.providers || [],
+    provideHttpClient()
+  ]
+}).catch((err) => console.error(err));
