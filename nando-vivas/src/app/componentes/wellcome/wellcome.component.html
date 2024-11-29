@@ -1,0 +1,32 @@
+<div class="container mx-auto flex justify-center items-center h-screen">
+    <!-- Carrusel principal que ocupa el 100% del ancho y el 80% de la altura -->
+    <div class="relative w-full h-4/5 overflow-hidden">
+      <!-- Carrusel Horizontal con animación de desplazamiento -->
+      <div class="flex space-x-4 transition-transform duration-[20000ms] transform -translate-x-full animate-infinite">
+        <!-- Carrusel Horizontal -->
+        @for (project of projects(); track project.id) {
+          <div class="flex-none w-1/3">
+            <a [routerLink]="['/detail', project.id]">
+              <img [src]="project.image" alt="{{ project.title }}" class="w-full rounded-lg">
+            </a>
+            <h3 class="text-center font-semibold">{{ project.title }}</h3>
+          </div>
+          
+          <!-- Carrusel Vertical intercalado cada 3 elementos -->
+          @if ((projects().indexOf(project) + 1) % 3 === 0) {
+            <div class="w-1/3 overflow-hidden h-full">
+              <!-- Carrusel Vertical con animación de desplazamiento -->
+              <div class="space-y-4 transition-transform duration-[15000ms] transform -translate-y-full animate-infinite">
+                @for (innerProject of projects(); track innerProject.id) {
+                  <a [routerLink]="['/detail', innerProject.id]">
+                    <img [src]="innerProject.image" alt="{{ innerProject.title }}" class="w-full rounded-lg mb-2">
+                  </a>
+                }
+              </div>
+            </div>
+          }
+        }
+      </div>
+    </div>
+  </div>
+  

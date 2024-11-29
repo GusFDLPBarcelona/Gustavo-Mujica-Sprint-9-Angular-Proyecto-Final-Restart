@@ -1,0 +1,22 @@
+<div class="flex items-center justify-between px-4 py-4 bg-gray-100 h-20 relative">
+    <!-- Logo -->
+    <div class="flex-shrink-0 mx-auto mt-4 md:mx-0 md:mt-0">
+        <img src="assets/vivas_logo.svg" alt="Logo" class="w-48 h-auto md:w-36" />
+    </div>
+
+    <!-- Menú de navegación (visible en pantallas grandes) -->
+    <div class="space-x-6 text-sm md:text-base hidden md:flex">
+        <a href="#work" class="hover:text-gray-600">Work</a>
+        <a href="#contact" class="hover:text-gray-600">Contact</a>
+        <a href="#shop" class="hover:text-gray-600">Shop</a>
+    </div>
+
+    <!-- Botón de menú (visible solo en pantallas pequeñas) -->
+    <div class="md:hidden mt-4">
+        @if (!isMenuVisible) {
+        <button (click)="toggleMenu()" class="text-gray-600 focus:outline-none">
+            ☰
+        </button>
+        }
+    </div>
+</div>

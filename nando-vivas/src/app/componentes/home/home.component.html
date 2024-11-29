@@ -1,0 +1,36 @@
+<div class="container mx-auto px-4 py-6">
+    <!-- Tabs de Filtros -->
+    <div class="flex justify-center space-x-4 mb-8">
+      @for (category of categories(); track category) {
+        <button (click)="setActiveCategory(category)"
+                class="px-4 py-2 text-sm font-semibold rounded-lg hover:bg-gray-200 focus:outline-none"
+                [class.bg-gray-300]="activeCategory() === category">
+          {{ category }}
+        </button>
+      }
+    </div>
+  
+    <!-- Galería de Proyectos -->
+    <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      @for (project of sortedProjects(); track project.id) {
+        <div class="relative group transition-all duration-200"
+             [class.opacity-50]="project.category !== activeCategory() && activeCategory() !== 'All'"
+             [class.opacity-100]="project.category === activeCategory() || activeCategory() === 'All'">
+          
+          <!-- Imagen con enlace al detalle -->
+          <a [routerLink]="['/detail', project.id]" class="block">
+            <img [src]="project.image" alt="{{ project.title }}" class="w-full h-auto rounded-lg">
+          </a>
+          
+          <!-- Título y descripción alineados -->
+          <div class="pt-2">
+            <h3 class="text-center font-semibold">{{ project.title }}</h3>
+            <p class="text-center text-gray-500 text-sm">{{ project.client }}</p>
+          </div>
+        </div>
+      } @empty {
+        <div class="text-center text-gray-500">No projects available</div>
+      }
+    </div>
+  </div>
+  
