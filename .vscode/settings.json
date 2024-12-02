@@ -1,0 +1,4 @@
+{
+    "genieai.enableConversationHistory": true,
+    "files.autoSave": "onFocusChange"
+}
